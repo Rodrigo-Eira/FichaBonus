@@ -4,8 +4,8 @@ import pt.ulusofona.cm.kotlin.challenge.interfaces.Movimentavel
 import java.util.*
 
 abstract class Veiculo(open val identificador: String) : Movimentavel {
-    lateinit var posicao: Posicao
-    lateinit var dataDeAquisicao : Date
+    var posicao: Posicao = Posicao(0,0)
+    var dataDeAquisicao : Date = Date()
 
     abstract fun requerCarta() : Boolean
 }

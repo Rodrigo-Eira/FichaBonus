@@ -2,6 +2,7 @@ package pt.ulusofona.cm.kotlin.challenge.models
 
 import pt.ulusofona.cm.kotlin.challenge.exceptions.VeiculoDesligadoException
 import pt.ulusofona.cm.kotlin.challenge.interfaces.Ligavel
+import java.text.SimpleDateFormat
 
 class Carro(override val identificador : String, var motor: Motor) : Veiculo(identificador), Ligavel {
     override fun requerCarta(): Boolean {
@@ -9,11 +10,14 @@ class Carro(override val identificador : String, var motor: Motor) : Veiculo(ide
     }
 
     override fun moverPara(x: Int, y: Int) {
-        if(motor.estaLigado()){
+        if(estaLigado()){
             posicao.alterarPosicaoPara(x, y)
+            desligar()
+        } else {
+            ligar()
+            posicao.alterarPosicaoPara(x, y)
+            desligar()
         }
-        throw VeiculoDesligadoException()
-
     }
 
     override fun ligar() {
@@ -29,6 +33,12 @@ class Carro(override val identificador : String, var motor: Motor) : Veiculo(ide
     }
 
     override fun toString(): String {
-        return "Carro | $identificador | $dataDeAquisicao | $posicao"
+        return "Carro | $identificador | ${dataFormatada()} | $posicao"
+    }
+
+    fun dataFormatada() : String {
+        val formato = SimpleDateFormat("dd-MM-yyyy")
+        val dataModificada = formato.format(dataDeAquisicao)
+        return dataModificada.toString()
     }
 }

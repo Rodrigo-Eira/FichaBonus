@@ -9,6 +9,7 @@ class Motor(var cavalos: Int, var cilindrada: Int) : Ligavel {
     override fun ligar() {
         if(!ligado){
             ligado = true
+            return
         }
         throw VeiculoLigadoException()
     }
@@ -16,6 +17,7 @@ class Motor(var cavalos: Int, var cilindrada: Int) : Ligavel {
     override fun desligar() {
         if(ligado){
             ligado = false
+            return
         }
         throw VeiculoDesligadoException()
     }

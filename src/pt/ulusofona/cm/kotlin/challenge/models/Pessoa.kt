@@ -4,6 +4,8 @@ import pt.ulusofona.cm.kotlin.challenge.exceptions.MenorDeIdadeException
 import pt.ulusofona.cm.kotlin.challenge.exceptions.PessoaSemCartaException
 import pt.ulusofona.cm.kotlin.challenge.exceptions.VeiculoNaoEncontradoException
 import pt.ulusofona.cm.kotlin.challenge.interfaces.Movimentavel
+import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.time.Instant
 import java.util.*
 
@@ -17,7 +19,7 @@ class Pessoa(var nome : String, var dataDeNascimento : Date) : Movimentavel{
     }
 
     override fun toString(): String {
-        return "Pessoa | $nome | $dataDeNascimento | $posicao"
+        return "Pessoa | $nome | ${dataFormatada()} | $posicao"
     }
 
     fun comprarVeiculo(veiculo: Veiculo){
@@ -64,5 +66,11 @@ class Pessoa(var nome : String, var dataDeNascimento : Date) : Movimentavel{
         val idadeEmMilis = now.time - dataDeNascimento.time
         val idadeEmAnos = idadeEmMilis / 1000L / 60L / 60L / 24L / 365L
         return idadeEmAnos >= 18L
+    }
+
+    fun dataFormatada() : String {
+        val formato = SimpleDateFormat("dd-MM-yyyy")
+        val dataModificada = formato.format(dataDeNascimento)
+        return dataModificada.toString()
     }
 }
