@@ -25,17 +25,17 @@ class Pessoa(var nome : String, var dataDeNascimento : Date) : Movimentavel{
         veiculos.add(veiculo)
     }
 
-    fun pesquisarVeiculo(indentificador: String) : Veiculo{
+    fun pesquisarVeiculo(identificador: String) : Veiculo{
         for(veiculo in veiculos){
-            if(veiculo.identificador == indentificador){
+            if(veiculo.identificador == identificador){
                 return veiculo
             }
         }
         throw VeiculoNaoEncontradoException()
     }
 
-    fun venderVeiculo(veiculo: Veiculo, comprador:Pessoa){
-        val veiculoPesquisado = pesquisarVeiculo(veiculo.identificador)
+    fun venderVeiculo(identificador: String, comprador:Pessoa){
+        val veiculoPesquisado = pesquisarVeiculo(identificador)
         veiculos.remove(veiculoPesquisado)
         comprador.comprarVeiculo(veiculoPesquisado)
     }
