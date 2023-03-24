@@ -53,6 +53,7 @@ class Pessoa(var nome : String, var dataDeNascimento : Date) : Movimentavel{
     fun tirarCarta(){
         if(maiorDeIdade()){
             this.carta = Carta()
+            return
         }
         throw MenorDeIdadeException()
     }
