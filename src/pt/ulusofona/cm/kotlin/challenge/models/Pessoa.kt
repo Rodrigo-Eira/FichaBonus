@@ -26,9 +26,9 @@ class Pessoa(var nome : String, var dataDeNascimento : Date) : Movimentavel{
     }
 
     fun pesquisarVeiculo(indentificador: String) : Veiculo{
-        veiculos.forEach {
-            if(it.identificador == indentificador){
-                return it
+        for(veiculo in veiculos){
+            if(veiculo.identificador == indentificador){
+                return veiculo
             }
         }
         throw VeiculoNaoEncontradoException()
