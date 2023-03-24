@@ -3,14 +3,19 @@ package pt.ulusofona.cm.kotlin.challenge.models
 import pt.ulusofona.cm.kotlin.challenge.exceptions.MenorDeIdadeException
 import pt.ulusofona.cm.kotlin.challenge.exceptions.PessoaSemCartaException
 import pt.ulusofona.cm.kotlin.challenge.exceptions.VeiculoNaoEncontradoException
+import pt.ulusofona.cm.kotlin.challenge.interfaces.Movimentavel
 import java.time.Instant
 import java.util.*
 import kotlin.time.Duration.Companion.minutes
 
-class Pessoa(var nome : String, var dataDeNascimento : Date){
+class Pessoa(var nome : String, var dataDeNascimento : Date) : Movimentavel{
     lateinit var veiculos : ArrayList<Veiculo>
     var carta: Carta? = null
     var posicao: Posicao = Posicao(0,0)
+
+    override fun moverPara(x: Int, y: Int) {
+        posicao.alterarPosicaoPara(x, y)
+    }
 
     override fun toString(): String {
         return "Pessoa | $nome | $dataDeNascimento | $posicao"
