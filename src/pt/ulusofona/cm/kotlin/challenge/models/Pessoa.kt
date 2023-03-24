@@ -48,6 +48,7 @@ class Pessoa(var nome : String, var dataDeNascimento : Date) : Movimentavel{
             throw PessoaSemCartaException(nome)
         }
         veiculo.moverPara(x, y)
+        moverPara(x,y)
     }
 
     fun tirarCarta(){
