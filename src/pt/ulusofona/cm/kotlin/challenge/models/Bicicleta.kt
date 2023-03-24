@@ -1,6 +1,6 @@
 package pt.ulusofona.cm.kotlin.challenge.models
 
-class Bicicleta (override val indentificador : String) : Veiculo(indentificador) {
+class Bicicleta (override val identificador : String) : Veiculo(identificador) {
     override fun requerCarta(): Boolean {
         return false
     }
@@ -10,6 +10,6 @@ class Bicicleta (override val indentificador : String) : Veiculo(indentificador)
     }
 
     override fun toString(): String {
-        return "Bicicleta | $indentificador | $dataDeAquisicao | $posicao"
+        return "Bicicleta | $identificador | $dataDeAquisicao | $posicao"
     }
 }

@@ -6,7 +6,6 @@ import pt.ulusofona.cm.kotlin.challenge.exceptions.VeiculoNaoEncontradoException
 import pt.ulusofona.cm.kotlin.challenge.interfaces.Movimentavel
 import java.time.Instant
 import java.util.*
-import kotlin.time.Duration.Companion.minutes
 
 class Pessoa(var nome : String, var dataDeNascimento : Date) : Movimentavel{
     lateinit var veiculos : ArrayList<Veiculo>
@@ -28,7 +27,7 @@ class Pessoa(var nome : String, var dataDeNascimento : Date) : Movimentavel{
 
     fun pesquisarVeiculo(indentificador: String) : Veiculo{
         veiculos.forEach {
-            if(it.indentificador == indentificador){
+            if(it.identificador == indentificador){
                 return it
             }
         }
@@ -36,7 +35,7 @@ class Pessoa(var nome : String, var dataDeNascimento : Date) : Movimentavel{
     }
 
     fun venderVeiculo(veiculo: Veiculo, comprador:Pessoa){
-        val veiculoPesquisado = pesquisarVeiculo(veiculo.indentificador)
+        val veiculoPesquisado = pesquisarVeiculo(veiculo.identificador)
         veiculos.remove(veiculoPesquisado)
         comprador.comprarVeiculo(veiculoPesquisado)
     }
