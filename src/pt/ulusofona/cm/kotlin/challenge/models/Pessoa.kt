@@ -8,7 +8,7 @@ import java.time.Instant
 import java.util.*
 
 class Pessoa(var nome : String, var dataDeNascimento : Date) : Movimentavel{
-    lateinit var veiculos : ArrayList<Veiculo>
+    var veiculos : MutableList<Veiculo> = mutableListOf()
     var carta: Carta? = null
     var posicao: Posicao = Posicao(0,0)
 
